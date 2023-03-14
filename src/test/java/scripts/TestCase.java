@@ -29,10 +29,11 @@ import org.testng.asserts.SoftAssert;
 
 import context.TestContext;
 import dataProvider.ConfigFileReader;
-import dataProvider.ReadWriteExcel;
+//import dataProvider.ReadWriteExcel;
 import extentReport.ExtentReport;
 import objectManager.DriverManager;
-import pageObjects.RelevelPageObjects;
+import pageObjects.JalaPageObjects;
+
 import utils.Action;
 import utils.Logging;
 import utils.Utility;
@@ -42,13 +43,13 @@ import static java.lang.Thread.sleep;
 public class TestCase 
 {
 	WebDriver driver;
-	RelevelPageObjects pageObjects;
+	JalaPageObjects pageObjects;
 	TestContext testContext;
-	RelevelPageObjects relevelPageObjects;
+	JalaPageObjects PageObjects;
 	Action action;
 	ExtentReport extentReport;
 	SoftAssert softAssert;
-	ReadWriteExcel excel;
+	//ReadWriteExcel excel;
 	
 	@BeforeSuite
 	public void beforeSuite() throws IOException
@@ -56,11 +57,11 @@ public class TestCase
 		driver = DriverManager.getDriver();
 		driver.get(ConfigFileReader.getUrl());		
 		testContext = new TestContext();
-		relevelPageObjects = testContext.getPageObjectManager().getRelevelPageObjects();
+		PageObjects = testContext.getPageObjectManager().getPageObjects();
 		action = testContext.getActionObject();
 		extentReport = testContext.getExtentReport();
 		softAssert = new SoftAssert();
-		excel = new ReadWriteExcel();	
+		//excel = new ReadWriteExcel();
 		PropertyConfigurator.configure("log4j.properties");
 	}
 	
@@ -88,12 +89,12 @@ public class TestCase
 
 
 		  extentReport.createTest("TC001-This test verifies the LogIn Functionality");
-		  action.sendKeys(relevelPageObjects.userName, "training@jalaacademy.com", "UserName textbox");
+		  action.sendKeys(PageObjects.userName, "training@jalaacademy.com", "UserName textbox");
 		  extentReport.info("UserName Entered");
-		  action.sendKeys(relevelPageObjects.password, "jobprogram", "Password textbox");
+		  action.sendKeys(PageObjects.password, "jobprogram", "Password textbox");
 		  extentReport.info("Password Entered");
 
-		  action.clickLink(relevelPageObjects.btnLogin, "Login link");
+		  action.clickLink(PageObjects.btnLogin, "Login link");
 		  extentReport.info("SignIn button clicked");
 
 
@@ -121,40 +122,40 @@ public class TestCase
 	  try
 	  {
 		  extentReport.createTest("TC002-This test create an employee");
-		  action.clickLink(relevelPageObjects.employee, "Employee link");
+		  action.clickLink(PageObjects.employee, "Employee link");
 		  extentReport.info("Employee dropDown is clicked");
-		  action.clickLink(relevelPageObjects.create, "Creating Employee link");
+		  action.clickLink(PageObjects.create, "Creating Employee link");
 		  extentReport.info("In Employee dropDown Create is clicked");
 
-		  action.sendKeys(relevelPageObjects.firstName, "Ashok", "FirstName textbox");
+		  action.sendKeys(PageObjects.firstName, "Ashok", "FirstName textbox");
 		  extentReport.info("FirstName Entered");
 
-		  action.sendKeys(relevelPageObjects.lastName, "Kumar", "LastName textbox");
+		  action.sendKeys(PageObjects.lastName, "Kumar", "LastName textbox");
 		  extentReport.info("LastName Entered");
 
-		  action.sendKeys(relevelPageObjects.emailId, "ashokKumar28@gmail.com", "EmailId textbox");
+		  action.sendKeys(PageObjects.emailId, "ashokKumar28@gmail.com", "EmailId textbox");
 		  extentReport.info("emailId Entered");
 
 
-		  action.sendKeys(relevelPageObjects.mobileNo, "9876543211", "Mobile number textbox");
+		  action.sendKeys(PageObjects.mobileNo, "9876543211", "Mobile number textbox");
 		  extentReport.info("Mobile number");
 
-		  action.clickLink(relevelPageObjects.datePicker, "DatePicker");
-		  action.clickLink(relevelPageObjects.datePicker1, "DatePicker1");
-		  action.clickLink(relevelPageObjects.datePicker2, "DatePicker2");
-		  action.clickLink(relevelPageObjects.dateYearArrow, "Year Arrow");
-		  action.clickLink(relevelPageObjects.dateYearArrow, "Year Arrow");
-		  action.clickLink(relevelPageObjects.year, "Year Arrow");
-		  action.clickLink(relevelPageObjects.month, "Month Arrow");
-		  action.clickLink(relevelPageObjects.date, "Date Arrow");
+		  action.clickLink(PageObjects.datePicker, "DatePicker");
+		  action.clickLink(PageObjects.datePicker1, "DatePicker1");
+		  action.clickLink(PageObjects.datePicker2, "DatePicker2");
+		  action.clickLink(PageObjects.dateYearArrow, "Year Arrow");
+		  action.clickLink(PageObjects.dateYearArrow, "Year Arrow");
+		  action.clickLink(PageObjects.year, "Year Arrow");
+		  action.clickLink(PageObjects.month, "Month Arrow");
+		  action.clickLink(PageObjects.date, "Date Arrow");
 		  extentReport.info("Date of Birth is selected");
 
 
-		  action.clickLink(relevelPageObjects.gender, "Gender");
+		  action.clickLink(PageObjects.gender, "Gender");
 		  extentReport.info("Gender is selected");
 
 
-		  action.sendKeys(relevelPageObjects.address, "Ramoji Nagar , New Delhi", "Address textbox");
+		  action.sendKeys(PageObjects.address, "Ramoji Nagar , New Delhi", "Address textbox");
 		  extentReport.info("Address is Entered");
 
 
@@ -167,16 +168,16 @@ public class TestCase
 		  extentReport.info("City is Selected");
 
 
-		  action.clickLink(relevelPageObjects.skill, "Skill Checked");
+		  action.clickLink(PageObjects.skill, "Skill Checked");
 		  extentReport.info("Skill is Selected");
 
-		  action.clickLink(relevelPageObjects.saveBtn, "Employee Created");
+		  action.clickLink(PageObjects.saveBtn, "Employee Created");
 		  extentReport.info("Employee Created");
 
 
 		  extentReport.info("This test case is Completed");
 
-          action.clickLink(relevelPageObjects.Homebtn, "Dashboard");
+          action.clickLink(PageObjects.Homebtn, "Dashboard");
           extentReport.info("Dashboard is Selected");
 
 		  sleep(2000);
@@ -206,16 +207,16 @@ public class TestCase
 		try
 		{
 			extentReport.createTest("TC003-This test searches for an employee");
-			action.clickLink(relevelPageObjects.employee, "Employee link");
+			action.clickLink(PageObjects.employee, "Employee link");
 			extentReport.info("Employee dropDown is clicked");
 
-			action.clickLink(relevelPageObjects.searchBtn, "Search Button");
+			action.clickLink(PageObjects.searchBtn, "Search Button");
 			extentReport.info("Employee search button is clicked");
 
-			action.sendKeys(relevelPageObjects.searchBtnname, "Ashok", "Searched Name");
+			action.sendKeys(PageObjects.searchBtnname, "Ashok", "Searched Name");
 			extentReport.info("Employee search Name is inputted");
 
-			action.clickLink(relevelPageObjects.searchBtn1, "Search Button");
+			action.clickLink(PageObjects.searchBtn1, "Search Button");
 			extentReport.info("Employee search button is clicked");
 
 			extentReport.info("This test case is Completed");
@@ -246,8 +247,8 @@ public class TestCase
 			extentReport.createTest("TC004-This test deletes an employee after searching it");
 
 
-			action.clickLink(relevelPageObjects.deleteBtn, "Delete");
-			action.clickLink(relevelPageObjects.YesdeleteBtn,"Confirm Delete");
+			action.clickLink(PageObjects.deleteBtn, "Delete");
+			action.clickLink(PageObjects.YesdeleteBtn,"Confirm Delete");
 			extentReport.info("Delete button is clicked");
 			extentReport.info("Search data  is deleted");
 
@@ -275,31 +276,31 @@ public class TestCase
 		{
 			extentReport.createTest("TC005-This test edits an employee after searching it");
 
-			action.clickLink(relevelPageObjects.Homebtn, "Dashboard");
+			action.clickLink(PageObjects.Homebtn, "Dashboard");
 			extentReport.info("Dashboard is Selected");
 
-			action.clickLink(relevelPageObjects.employee, "Employee link");
+			action.clickLink(PageObjects.employee, "Employee link");
 			extentReport.info("Employee dropDown is clicked");
 
 
 
 
-			action.clickLink(relevelPageObjects.searchBtn, "Search Button");
+			action.clickLink(PageObjects.searchBtn, "Search Button");
 			extentReport.info("Employee search button is clicked");
 
-			action.sendKeys(relevelPageObjects.searchBtnname, "Ashok", "Searched Name");
+			action.sendKeys(PageObjects.searchBtnname, "Ashok", "Searched Name");
 			extentReport.info("Employee search Name is inputted");
 
-			action.clickLink(relevelPageObjects.searchBtn1, "Search Button");
+			action.clickLink(PageObjects.searchBtn1, "Search Button");
 			extentReport.info("Employee search button is clicked");
 
-			action.clickLink(relevelPageObjects.editBtn, "Edit Button");
+			action.clickLink(PageObjects.editBtn, "Edit Button");
 			extentReport.info("Employee edit button is clicked");
 
-			action.sendKeys(relevelPageObjects.mobileNo, "7777777777", "update mobile no");
+			action.sendKeys(PageObjects.mobileNo, "7777777777", "update mobile no");
 			extentReport.info("update Skill");
 
-			action.clickLink(relevelPageObjects.updateBtn, "edit mobile no");
+			action.clickLink(PageObjects.updateBtn, "edit mobile no");
 			extentReport.info("edit mobile no");
 
 			sleep(2000);
@@ -327,53 +328,53 @@ public class TestCase
 		{
 			extentReport.createTest("TC006-This test adds an employee");
 
-            action.clickLink(relevelPageObjects.Homebtn, "Dashboard");
+            action.clickLink(PageObjects.Homebtn, "Dashboard");
             extentReport.info("Dashboard is Selected");
 
-            action.clickLink(relevelPageObjects.employee, "Employee link");
+            action.clickLink(PageObjects.employee, "Employee link");
             extentReport.info("Employee dropDown is clicked");
 
 
 
 
-            action.clickLink(relevelPageObjects.searchBtn, "Search Button");
+            action.clickLink(PageObjects.searchBtn, "Search Button");
             extentReport.info("Employee search button is clicked");
 
 
-			action.clickLink(relevelPageObjects.AddEmployee, "Add Button");
+			action.clickLink(PageObjects.AddEmployee, "Add Button");
 			extentReport.info("Employee add button is clicked");
 
 
 
-			action.sendKeys(relevelPageObjects.firstName, "Chandragupta", "FirstName textbox");
+			action.sendKeys(PageObjects.firstName, "Chandragupta", "FirstName textbox");
 			extentReport.info("FirstName Entered");
 
-			action.sendKeys(relevelPageObjects.lastName, "Maurya", "LastName textbox");
+			action.sendKeys(PageObjects.lastName, "Maurya", "LastName textbox");
 			extentReport.info("LastName Entered");
 
-			action.sendKeys(relevelPageObjects.emailId, "cmaurya28@gmail.com", "EmailId textbox");
+			action.sendKeys(PageObjects.emailId, "cmaurya28@gmail.com", "EmailId textbox");
 			extentReport.info("emailId Entered");
 
 
-			action.sendKeys(relevelPageObjects.mobileNo, "9898989898", "Mobile number textbox");
+			action.sendKeys(PageObjects.mobileNo, "9898989898", "Mobile number textbox");
 			extentReport.info("Mobile number");
 
-			action.clickLink(relevelPageObjects.datePicker, "DatePicker");
-			action.clickLink(relevelPageObjects.datePicker1, "DatePicker1");
-			action.clickLink(relevelPageObjects.datePicker2, "DatePicker2");
-			action.clickLink(relevelPageObjects.dateYearArrow, "Year Arrow");
-			action.clickLink(relevelPageObjects.dateYearArrow, "Year Arrow");
-			action.clickLink(relevelPageObjects.year, "Year Arrow");
-			action.clickLink(relevelPageObjects.month, "Month Arrow");
-			action.clickLink(relevelPageObjects.date, "Date Arrow");
+			action.clickLink(PageObjects.datePicker, "DatePicker");
+			action.clickLink(PageObjects.datePicker1, "DatePicker1");
+			action.clickLink(PageObjects.datePicker2, "DatePicker2");
+			action.clickLink(PageObjects.dateYearArrow, "Year Arrow");
+			action.clickLink(PageObjects.dateYearArrow, "Year Arrow");
+			action.clickLink(PageObjects.year, "Year Arrow");
+			action.clickLink(PageObjects.month, "Month Arrow");
+			action.clickLink(PageObjects.date, "Date Arrow");
 			extentReport.info("Date of Birth is selected");
 
 
-			action.clickLink(relevelPageObjects.gender, "Gender");
+			action.clickLink(PageObjects.gender, "Gender");
 			extentReport.info("Gender is selected");
 
 
-			action.sendKeys(relevelPageObjects.address, "kakinada , Surat", "Address textbox");
+			action.sendKeys(PageObjects.address, "kakinada , Surat", "Address textbox");
 			extentReport.info("Address is Entered");
 
 
@@ -386,16 +387,16 @@ public class TestCase
 			extentReport.info("City is Selected");
 
 
-			action.clickLink(relevelPageObjects.skill1, "Skill Checked");
+			action.clickLink(PageObjects.skill1, "Skill Checked");
 			extentReport.info("Skill is Selected");
 
-			action.clickLink(relevelPageObjects.saveBtn, "Employee Created");
+			action.clickLink(PageObjects.saveBtn, "Employee Created");
 			extentReport.info("Employee Created");
 
 
 			extentReport.info("This test case is Completed");
 
-			action.clickLink(relevelPageObjects.Homebtn, "Dashboard");
+			action.clickLink(PageObjects.Homebtn, "Dashboard");
 			extentReport.info("Dashboard is Selected");
 
 			sleep(2000);
@@ -429,7 +430,7 @@ public class TestCase
 			extentReport.createTest("TC007-This test clicks on the More tab");
 
 
-			action.clickLink(relevelPageObjects.moreBtn, "More Button");
+			action.clickLink(PageObjects.moreBtn, "More Button");
 
 			extentReport.info("clicks on the More tab");
 			Logging.info("clicks on More Tab ");
@@ -458,24 +459,24 @@ public class TestCase
 		try
 		{
 			extentReport.createTest("TC008-This test clicks checks for multiple tabs");
-			action.clickLink(relevelPageObjects.multipleTabBtn, "MultipleTab Button");
+			action.clickLink(PageObjects.multipleTabBtn, "MultipleTab Button");
 			extentReport.info("clicks on the MultipleTab tab");
 
 
-			action.clickLink(relevelPageObjects.TabBtn1, "Tab Button1");
+			action.clickLink(PageObjects.TabBtn1, "Tab Button1");
 			extentReport.info("clicks on the Tab Button 1");
 			Logging.info("Tab 1 clicked");
 			extentReport.addScreenshot(driver);
 			sleep(1000);
 
 
-			action.clickLink(relevelPageObjects.TabBtn2, "Tab Button2");
+			action.clickLink(PageObjects.TabBtn2, "Tab Button2");
 			extentReport.info("clicks on the Tab Button 2");
 			 Logging.info("Tab 2 clicked");
 			extentReport.addScreenshot(driver);
 			sleep(1000);
 
-			action.clickLink(relevelPageObjects.TabBtn3, "Tab Button3");
+			action.clickLink(PageObjects.TabBtn3, "Tab Button3");
 			extentReport.info("clicks on the Tab Button 3");
 			Logging.info("clicks on Tab 3");
 			extentReport.addScreenshot(driver);
@@ -506,11 +507,11 @@ public class TestCase
 		try
 		{
 			extentReport.createTest("TC009-This test clicks checks for menu tabs");
-			action.clickLink(relevelPageObjects.menuBtn, "Menu Button");
+			action.clickLink(PageObjects.menuBtn, "Menu Button");
 			extentReport.info("clicks on the Menu tab");
 
 
-			action.clickLink(relevelPageObjects.menuBtn1, "Testing Menu Option");
+			action.clickLink(PageObjects.menuBtn1, "Testing Menu Option");
 			extentReport.info("clicks on the Testing Menu Option");
 			Logging.info("Testing Menu is clicked");
 
@@ -520,7 +521,7 @@ public class TestCase
 //------------------------------------------------------------------------>
 
 
-			action.clickLink(relevelPageObjects.menuBtn2, "Testing Java Menu Option");
+			action.clickLink(PageObjects.menuBtn2, "Testing Java Menu Option");
 			extentReport.info("clicks on the Java Menu Option");
 			Logging.info("Java Menu Option is clicked");
 
@@ -530,7 +531,7 @@ public class TestCase
 //------------------------------------------------------------------------>
 
 
-			action.clickLink(relevelPageObjects.menuBtn3, "Testing .Net menu Option");
+			action.clickLink(PageObjects.menuBtn3, "Testing .Net menu Option");
 			extentReport.info("clicks on the .Net menu Option");
 			Logging.info(".Net menu Menu Option is clicked");
 
@@ -541,7 +542,7 @@ public class TestCase
 //------------------------------------------------------------------------>
 
 
-			action.clickLink(relevelPageObjects.menuBtn4, "Testing DataBase menu Option");
+			action.clickLink(PageObjects.menuBtn4, "Testing DataBase menu Option");
 			extentReport.info("clicks on the DataBase menu Option");
 			Logging.info("DataBase menu Menu Option is clicked");
 
@@ -572,11 +573,11 @@ public class TestCase
 		try
 		{
 			extentReport.createTest("TC010-This test clicks  checks for sub-menu tabs");
-			action.clickLink(relevelPageObjects.menuBtn, "Sub-Menu Button");
+			action.clickLink(PageObjects.menuBtn, "Sub-Menu Button");
 			extentReport.info("clicks on the Sub-Menu tab");
 
 
-			action.clickLink(relevelPageObjects.SubmenuBtn, "Testing Sub-Menu Option");
+			action.clickLink(PageObjects.SubmenuBtn, "Testing Sub-Menu Option");
 			extentReport.info("clicks on the Testing Sub-Menu Option");
 			Logging.info("Testing Sub-Menu is clicked");
 
@@ -586,8 +587,8 @@ public class TestCase
 //------------------------------------------------------------------------>
 
 
-			action.clickLink(relevelPageObjects.Submenu1Btn, "Testing Menu Option");
-			action.clickLink(relevelPageObjects.Submenu2Btn, "Selenium Menu Option");
+			action.clickLink(PageObjects.Submenu1Btn, "Testing Menu Option");
+			action.clickLink(PageObjects.Submenu2Btn, "Selenium Menu Option");
 			extentReport.info("clicks on the Selenium sub-menu Menu Option");
 			Logging.info("Selenium Menu Option is clicked");
 
@@ -597,8 +598,8 @@ public class TestCase
 //------------------------------------------------------------------------>
 
 
-			action.clickLink(relevelPageObjects.Submenu3Btn, "Testing DataBase menu Option");
-			action.clickLink(relevelPageObjects.Submenu4Btn, "Testing MySql menu Option");
+			action.clickLink(PageObjects.Submenu3Btn, "Testing DataBase menu Option");
+			action.clickLink(PageObjects.Submenu4Btn, "Testing MySql menu Option");
 			extentReport.info("clicks on the MySql menu Option");
 			Logging.info("MySql menu Menu Option is clicked");
 
@@ -628,7 +629,7 @@ public class TestCase
 		Logging.startTestCase("TC011");
 		try {
 			extentReport.createTest("TC011-This test clicks checks for Autocomplete tabs");
-			action.clickLink(relevelPageObjects.AutoCompleteBtn, "AutoComplete Button");
+			action.clickLink(PageObjects.AutoCompleteBtn, "AutoComplete Button");
 			extentReport.info("clicks on the AutoComplete tab");
 
 
@@ -660,67 +661,7 @@ public class TestCase
 				}
 			}
 
-	/*@Test(description="TC012-This test clicks checks for Multiple Autocomplete tabs",priority=12,enabled=true)
-	public void tc_12() throws Exception
-	{
-		WebDriverWait wait=new WebDriverWait(driver, 5);;
-		Logging.startTestCase("TC012");
-		try {
-			extentReport.createTest("TC012-This test clicks checks for Autocomplete tabs");
-			action.clickLink(relevelPageObjects.MultipleAutoCompleteBtn, "Multi-AutoComplete Button");
-			extentReport.info("clicks on the Multi-AutoComplete tab");
 
-
-			driver.findElement(By.xpath("//*[@id=\"txtMultipleAutoComplete\"]")).sendKeys("Ja");
-			Thread.sleep(2000);
-			List<WebElement> searchListAutoComplete = driver.findElements(By.xpath("//*[@id=\"ui-id-404\"]"));
-			for (WebElement ele : searchListAutoComplete) {
-				String searchTexts = ele.getText();
-				System.out.println(searchTexts);
-
-				if (searchTexts.contains("JavaScript")) {
-					ele.click();
-					System.out.println(ele);
-				}
-			}
-
-			extentReport.info("clicks on AutoComplete and selects javascript");
-			Logging.info("clicks on AutoComplete and selects javascript");
-			extentReport.addScreenshot(driver);
-			Thread.sleep(1000);
-
-			driver.findElement(By.xpath("//*[@id=\"txtMultipleAutoComplete\"]")).sendKeys("as");
-			Thread.sleep(2000);
-			List<WebElement> searchListAutoComplete1 = driver.findElements(By.xpath("//*[@id=\"ui-id-419\"]"));
-			for (WebElement ele1 : searchListAutoComplete1) {
-				String searchTexts = ele1.getText();
-				System.out.println(searchTexts);
-				if (searchTexts.contains("Asp")) {
-					ele1.click();
-					System.out.println(ele1);
-				}
-			}
-
-
-
-
-			extentReport.info("Clicks on AutoComplete and selects Asp");
-			Logging.info("clicks on AutoComplete and selects Asp");
-			extentReport.addScreenshot(driver);
-			Thread.sleep(1000);
-
-
-			Logging.endTestCase();
-
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-			extentReport.fail(e.getMessage());
-			Logging.info(e.getMessage());
-			Logging.endTestCase();
-		}
-	}*/
 
 	@Test(description="TC012-This test clicks checks for Autocollaspe tabs",priority=12,enabled=true)
 	public void tc_12() throws Exception
@@ -729,16 +670,16 @@ public class TestCase
 		Logging.startTestCase("TC012");
 		try {
 			extentReport.createTest("TC012-This test clicks checks for Collaspable Content");
-			action.clickLink(relevelPageObjects.CollaspableContentBtn, " Collaspable Content Button");
+			action.clickLink(PageObjects.CollaspableContentBtn, " Collaspable Content Button");
 			extentReport.info("clicks on the Collaspable Content");
 
-			action.clickLink(relevelPageObjects.CollaspableContentBtn1, " Collaspable Content Button");
+			action.clickLink(PageObjects.CollaspableContentBtn1, " Collaspable Content Button");
 			extentReport.info("clicks on the Collaspable Content");
 
-			action.clickLink(relevelPageObjects.CollaspableContentBtn2, " Collaspable Content Button");
+			action.clickLink(PageObjects.CollaspableContentBtn2, " Collaspable Content Button");
 			extentReport.info("clicks on the Collaspable Content");
 
-			action.clickLink(relevelPageObjects.CollaspableContentBtn3, " Collaspable Content Button");
+			action.clickLink(PageObjects.CollaspableContentBtn3, " Collaspable Content Button");
 			extentReport.info("clicks on the Collaspable Content");
 
 			Logging.info("clicks on single collaspepable content");
@@ -763,7 +704,7 @@ public class TestCase
 		Logging.startTestCase("TC013");
 		try {
 			extentReport.createTest("TC013-This test uploads image");
-			action.clickLink(relevelPageObjects.image, "Image click");
+			action.clickLink(PageObjects.image, "Image click");
 			extentReport.info("clicks on the image button");
 
 			Robot rb=new Robot();
@@ -817,11 +758,11 @@ public class TestCase
 		Logging.startTestCase("TC014");
 		try {
 			extentReport.createTest("TC014-This test clicks checks for Slide");
-			action.clickLink(relevelPageObjects.slide, " Slide Button");
+			action.clickLink(PageObjects.slide, " Slide Button");
 			extentReport.info("clicks on the Slide Content");
 			Actions action= new Actions(driver);
 
-			action.dragAndDropBy(relevelPageObjects.slide1, 100, 0).perform();
+			action.dragAndDropBy(PageObjects.slide1, 100, 0).perform();
 
 			sleep(2000);
 
@@ -852,11 +793,11 @@ public class TestCase
 		Logging.startTestCase("TC015");
 		try {
 			extentReport.createTest("TC015-This test clicks checks for ToolTips");
-			action.clickLink(relevelPageObjects.toolTip, "ToolTips");
+			action.clickLink(PageObjects.toolTip, "ToolTips");
 			extentReport.info("clicks on the ToolTips");
 
 
-			action.clickLink(relevelPageObjects.toolTip1, "ToolTips1");
+			action.clickLink(PageObjects.toolTip1, "ToolTips1");
 			extentReport.info("clicked on the ToolTips");
 
 
@@ -884,12 +825,12 @@ public class TestCase
 		Logging.startTestCase("TC016");
 		try {
 			extentReport.createTest("TC016-This test clicks checks for Popups");
-			action.clickLink(relevelPageObjects.Popups, "Popups");
+			action.clickLink(PageObjects.Popups, "Popups");
 			extentReport.info("clicks on the Popups");
 
 
 
-			action.clickLink(relevelPageObjects.Popups1, "Popups1");
+			action.clickLink(PageObjects.Popups1, "Popups1");
 			extentReport.info("clicks on the Popups1");
 
 			String MainWindow=driver.getWindowHandle();
@@ -943,7 +884,7 @@ public class TestCase
 		Logging.startTestCase("TC017");
 		try {
 			extentReport.createTest("TC017-This test clicks checks for alertBox");
-			action.clickLink(relevelPageObjects.alert, "alertBox");
+			action.clickLink(PageObjects.alert, "alertBox");
 			extentReport.info("clicks on the alertBox");
 
 			Alert alert = driver.switchTo().alert();
@@ -982,7 +923,7 @@ public class TestCase
 		Logging.startTestCase("TC018");
 		try {
 			extentReport.createTest("TC018-This test clicks checks for PromtBox");
-			action.clickLink(relevelPageObjects.promtBox, "PromtBox");
+			action.clickLink(PageObjects.promtBox, "PromtBox");
 			extentReport.info("clicks on the PromtBox");
 
 			Alert alert = driver.switchTo().alert();
@@ -1021,8 +962,8 @@ public class TestCase
 		Logging.startTestCase("TC019");
 		try {
 			extentReport.createTest("TC019-This test clicks checks for Links");
-			action.clickLink(relevelPageObjects.link, "Link");
-			action.clickLink(relevelPageObjects.link1, "Link2");
+			action.clickLink(PageObjects.link, "Link");
+			action.clickLink(PageObjects.link1, "Link2");
 			extentReport.info("clicks on the Link");
 			sleep(2000);
 
@@ -1047,44 +988,7 @@ public class TestCase
 
 
 
-	/*@Test(description="TC013-This test clicks checks for Multi Collaspable tabs",priority=14,enabled=true)
-	public void tc_14() throws Exception
-	{
-		WebDriverWait wait=new WebDriverWait(driver, 5);;
-		Logging.startTestCase("TC014");
-		try {
-			extentReport.createTest("TC014-This test clicks checks for Collaspable Content");
-			action.clickLink(relevelPageObjects.CollaspableContentMultiBtn, " Multi Collaspable Content Button");
-			extentReport.info("clicks on the Multi-Collaspable Content");
 
-			Thread.sleep(2000);
-
-			action.clickLink(relevelPageObjects.CollaspableContentMultiBtn1, " Collaspable Content Button 1");
-			extentReport.info("clicks on the Collaspable Content");
-
-			action.clickLink(relevelPageObjects.CollaspableContentMultiBtn2, " Collaspable Content Button 2");
-			extentReport.info("clicks on the Collaspable Content");
-
-			action.clickLink(relevelPageObjects.CollaspableContentMultiBtn3, " Collaspable Content Button 3");
-			extentReport.info("clicks on the Collaspable Content");
-
-			Logging.info("clicks on all the multi collaspepable content");
-			extentReport.addScreenshot(driver);
-
-			Logging.endTestCase();
-
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-			extentReport.fail(e.getMessage());
-			Logging.info(e.getMessage());
-			Logging.endTestCase();
-		}
-	}*/
-
-
-//-------------------------------------------------------------------
  @Test(description="TC020-This test verify logout functionality",priority=20,enabled=true)
   public void tc_20() throws Exception
   {
@@ -1092,7 +996,7 @@ public class TestCase
 	  try
 	  {
 		  extentReport.createTest("TC020-This test verify logout functionality");
-		  action.clickLink(relevelPageObjects.logOut, "Logout link");
+		  action.clickLink(PageObjects.logOut, "Logout link");
 		  extentReport.info("Logout button clicked");
 
 		   extentReport.info("This test case is Completed");

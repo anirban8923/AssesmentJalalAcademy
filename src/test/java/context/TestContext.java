@@ -2,7 +2,7 @@ package context;
 
 import java.io.IOException;
 
-import dataProvider.ReadWriteExcel;
+
 import extentReport.ExtentReport;
 import objectManager.DriverManager;
 import objectManager.PageObjectManager;
@@ -15,7 +15,7 @@ public class TestContext
 	private PageObjectManager pageObjectManager;
 	private Action action;
 	private ExtentReport extentReport;
-	private ReadWriteExcel readWriteExcel;
+
 	
 	
 	public TestContext() throws IOException
@@ -23,7 +23,7 @@ public class TestContext
 		pageObjectManager = new PageObjectManager(DriverManager.getDriver());		
 		action = new Action();
 		extentReport = new ExtentReport();
-		readWriteExcel = new ReadWriteExcel();		
+
 	}
 	
 	//retrun object of pageObjectmanager class
@@ -44,8 +44,5 @@ public class TestContext
 		return extentReport;
 	}
 	
-	public ReadWriteExcel getExcelObject()
-	{
-		return readWriteExcel;
-	}
+
 }

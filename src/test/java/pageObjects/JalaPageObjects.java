@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RelevelPageObjects 
+public class JalaPageObjects
 {	
-	public RelevelPageObjects(WebDriver driver)
+	public JalaPageObjects(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
@@ -170,8 +170,7 @@ public class RelevelPageObjects
 	public WebElement AutoCompleteBtn ;
 
 
-	/*@FindBy(xpath="//*[@id=\"frmMenu\"]/div/div/div/div/ul/li[2]/a")
-	public WebElement MultipleAutoCompleteBtn ;*/
+
 
 
 
@@ -189,16 +188,7 @@ public class RelevelPageObjects
 
 
 
-	/*@FindBy(xpath="//*[@id=\"frmCollapse\"]/div/div/div/div/ul/li[2]/a")
-	public WebElement CollaspableContentMultiBtn ;
 
-
-	@FindBy(css="body.skin-blue.sidebar-mini:nth-child(2) div.wrapper:nth-child(3) div.content-wrapper section.content:nth-child(3) form.frmCollapse div.box-body.box-body-list div.col-xs-12 div.row div.nav-tabs-custom div.tab-content div.tab-pane.active:nth-child(1) div.demo div.panel-group div.panel.panel-default:nth-child(1) div.panel-heading h4.panel-title > a.collapsed")
-	public WebElement CollaspableContentMultiBtn1 ;
-	@FindBy(css="body.skin-blue.sidebar-mini:nth-child(2) div.wrapper:nth-child(3) div.content-wrapper section.content:nth-child(3) form.frmCollapse div.box-body.box-body-list div.col-xs-12 div.row div.nav-tabs-custom div.tab-content div.tab-pane.active:nth-child(1) div.demo div.panel-group div.panel.panel-default:nth-child(2) div.panel-heading h4.panel-title > a.collapsed")
-	public WebElement CollaspableContentMultiBtn2 ;
-	@FindBy(css="body.skin-blue.sidebar-mini:nth-child(2) div.wrapper:nth-child(3) div.content-wrapper section.content:nth-child(3) form.frmCollapse div.box-body.box-body-list div.col-xs-12 div.row div.nav-tabs-custom div.tab-content div.tab-pane.active:nth-child(1) div.demo div.panel-group div.panel.panel-default:nth-child(3) div.panel-heading h4.panel-title > a.collapsed")
-	public WebElement CollaspableContentMultiBtn3 ;*/
 
 
 

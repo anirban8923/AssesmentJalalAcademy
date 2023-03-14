@@ -80,13 +80,6 @@ public class ConfigFileReader
 			throw new RuntimeException("pageLoadTimeout not specified in config.properties file");
 	}
 	
-	public static String getTestDataFile()
-	{
-		String testDataPath = properties.getProperty("testDataFilePath");
-		if(testDataPath !=null)
-			return testDataPath;
-		else
-			throw new RuntimeException("Test data file path not specified in config.properties file");
-	}
+
 
 }

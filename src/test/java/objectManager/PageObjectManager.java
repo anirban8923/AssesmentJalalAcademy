@@ -2,20 +2,22 @@ package objectManager;
 
 import org.openqa.selenium.WebDriver;
 
-import pageObjects.RelevelPageObjects;
+import pageObjects.JalaPageObjects;
+
 
 public class PageObjectManager 
 {	
 	private WebDriver driver;
-	private RelevelPageObjects relevelPageObjects;
+	private JalaPageObjects PageObjects;
 	
 	public PageObjectManager(WebDriver driver)
 	{
 		this.driver=driver;
 	}
 
-	public RelevelPageObjects getRelevelPageObjects()
+	public JalaPageObjects getPageObjects()
 	{
-		return (relevelPageObjects==null) ? relevelPageObjects = new RelevelPageObjects(driver): relevelPageObjects;
+
+		return (PageObjects==null) ? PageObjects = new JalaPageObjects(driver): PageObjects;
 	}
 }
